@@ -1,9 +1,9 @@
 package com.example.university.controller;
 
-import com.examle.university.model.Course;
-import com.examle.university.model.Professor;
-import com.examle.university.model.Student;
-import com.examle.university.service.CourseJpaService;
+import com.example.university.model.Course;
+import com.example.university.model.Professor;
+import com.example.university.model.Student;
+import com.example.university.service.CourseJpaService;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,6 +19,7 @@ public class CourseController {
     public List<Course> getCourses() {
         return courseJpaService.getCourses();
     }
+
     @GetMapping("/courses/{courseId}")
     public Course getCourseById(@PathVariable("courseId") int courseId) {
         return courseJpaService.getCourseById(courseId);
@@ -35,13 +36,17 @@ public class CourseController {
     }
 
     @DeleteMapping("/courses/{courseId}")
-
     public void deleteCourse(@PathVariable("courseId") int courseId) {
         courseJpaService.deleteCourse(courseId);
     }
 
     @GetMapping("/courses/{courseId}/professor")
-    public professor getCourseProfessor(@PathVariable("courseId") int courseId) {
+    public Professor getCourseProfessor(@PathVariable("courseId") int courseId) {
+        return courseJpaService.getCourseProfessor(courseId);
+    }
+
+    @GetMapping("/courses/{courseId}/students")
+    public List<Student> getCourseStudents(@PathVariable("courseId") int courseId) {
         return courseJpaService.getCourseStudents(courseId);
     }
 }
