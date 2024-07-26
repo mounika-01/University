@@ -21,7 +21,7 @@ public class ProfessorController {
 
     @GetMapping("/professors/{professorId}/courses")
     public List<Course> getProfessorCourses(@PathVariable("professorId") int professorId) {
-        return professorJpaService.getProfessorCourses(professorId);
+        return ProfessorJpaService.getProfessorCourses(professorId);
     }
 
     @GetMapping("/professors/{professorId}")
